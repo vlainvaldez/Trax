@@ -24,10 +24,17 @@ open class AppMainCoordinator: AbstractCoordinator {
     // MARK: Stored Properties
     private unowned let rootViewController: UINavigationController
     private unowned let window: UIWindow
+    private let trackAPIService: TrackAPIService = TrackAPIService()
     
     // MARK: Instance Methods
     public override func start() {
         super.start()
+        
+        self.trackAPIService.getTracks { (tracks: [Track]) -> Void in
+            tracks.forEach { (track: Track) in
+                print(track.trackId)
+            }
+        }
     
         let coordinator: MainCoordinator = MainCoordinator(
             navigationController: self.rootViewController

@@ -4,10 +4,28 @@ A Sample Project to demo the fetch of data from API Source
 ## This is a simple app that only fetch the information from the API and display the list and the details using collectionView
 
 ## Architecture Used
-MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/)
+MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/) + Programmatic UI
+### The Choice of using Coordinator is actually based on my experience on how to architecture the app with minimal used of boilerplate and to solve the navigation flow of the app for the developer to be clear on what will be the next to show. 
 
-## Architecture Used
-MVC + Coordinator Pattern
+###The Main app is actually dissected with these parts
+- Coordinator
+- VC
+- View
+
+
+## Pods Used
+
+[SnapKit](https://github.com/SnapKit/SnapKit)
+- DSL for Programmatic UI
+
+[King Fisher](https://github.com/onevcat/Kingfisher)
+- Swift library for downloading and caching images from the web.
+
+[Moya](https://github.com/Moya/Moya)
+- Networking abstraction layer that sufficiently encapsulates actually calling Alamofire directly. It should be simple enough that common things are easy, but comprehensive enough that complicated things are also easy.
+
+[RealmSwift](https://realm.io/docs/swift/latest/)
+- Data Persistence(local storage)
 
 ### How To Install
 

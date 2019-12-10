@@ -206,7 +206,7 @@ public final class DetailView: UIView {
 
         self.descriptionTextView.text = track.longDescription
         self.titleLabel.text = track.trackName
-        self.priceValueLabel.text = "\(track.trackHdPrice)"
+        self.priceValueLabel.text = "$ \(track.trackHdPrice)"
         self.genreValueLabel.text = track.primaryGenreName
     }
 }

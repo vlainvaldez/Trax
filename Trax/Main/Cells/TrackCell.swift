@@ -149,7 +149,7 @@ extension TrackCell {
         self.imageView.kf.indicatorType = .activity
         
         self.headerLabel.text = model.trackName
-        self.priceValueLabel.text = "\(model.trackHdPrice)"
+        self.priceValueLabel.text = "$ \(model.trackHdPrice)"
         self.genreValueLabel.text = "\(model.primaryGenreName)"
         
         self.imageView.kf.setImage(with: thumbNailURL, placeholder: UIImage(named: "Placeholder"), options: [.scaleFactor(UIScreen.main.scale),

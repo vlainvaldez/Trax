@@ -18,14 +18,17 @@ public final class MainCoordinator: AbstractCoordinator {
     
     // MARK: - Stored Properties
     private let navigationController: UINavigationController
+    private let trackAPIService: TrackAPIService = TrackAPIService()
     
     // MARK: - Instance Methods
     public override func start() {
         super.start()
-        let vc: MainVC = MainVC()
         
-        self.navigationController.setViewControllers([vc], animated: true)
-        self.add(childCoordinator: self)
+        self.trackAPIService.getTracks { (tracks: [Track]) -> Void in
+            let vc: MainVC = MainVC(tracks: tracks)
+            self.navigationController.setViewControllers([vc], animated: true)
+            self.add(childCoordinator: self)
+        }
     }
     
 }

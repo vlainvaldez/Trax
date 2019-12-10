@@ -18,7 +18,7 @@ public final class Track: NSObject, Decodable {
     public enum CodingKeys: String, CodingKey {
         case trackId
         case trackName
-        case artworkUrl60
+        case artworkUrl100
         case collectionPrice
         case trackPrice
         case trackRentalPrice
@@ -26,6 +26,7 @@ public final class Track: NSObject, Decodable {
         case trackHdPrice
         case trackHdRentalPrice
         case longDescription
+        case primaryGenreName
     }
     
     // MARK: - Initializer
@@ -36,7 +37,7 @@ public final class Track: NSObject, Decodable {
         
         self.trackId = try container.decode(Int.self, forKey: Track.CodingKeys.trackId)
         self.trackName = try container.decode(String.self, forKey: Track.CodingKeys.trackName)
-        self.artworkUrl60 = try container.decode(URL.self, forKey: Track.CodingKeys.artworkUrl60)
+        self.artworkUrl100 = try container.decode(URL.self, forKey: Track.CodingKeys.artworkUrl100)
         
         if let collectionPrice = try container.decodeIfPresent(Double.self, forKey: Track.CodingKeys.collectionPrice) {
             self.collectionPrice = collectionPrice
@@ -75,6 +76,7 @@ public final class Track: NSObject, Decodable {
         }
         
         self.longDescription = try container.decode(String.self, forKey: Track.CodingKeys.longDescription)
+        self.primaryGenreName = try container.decode(String.self, forKey: Track.CodingKeys.primaryGenreName)
 
         super.init()
     }
@@ -82,7 +84,7 @@ public final class Track: NSObject, Decodable {
     // MARK: Stored Properties
     public let trackId: Int
     public let trackName: String
-    public let artworkUrl60: URL
+    public let artworkUrl100: URL
     public let collectionPrice: Double
     public let trackPrice: Double
     public let trackRentalPrice: Double
@@ -90,4 +92,5 @@ public final class Track: NSObject, Decodable {
     public let trackHdPrice: Double
     public let trackHdRentalPrice: Double
     public let longDescription: String
+    public let primaryGenreName: String
 }

@@ -29,13 +29,7 @@ open class AppMainCoordinator: AbstractCoordinator {
     // MARK: Instance Methods
     public override func start() {
         super.start()
-        
-        self.trackAPIService.getTracks { (tracks: [Track]) -> Void in
-            tracks.forEach { (track: Track) in
-                print(track.trackId)
-            }
-        }
-    
+
         let coordinator: MainCoordinator = MainCoordinator(
             navigationController: self.rootViewController
         )

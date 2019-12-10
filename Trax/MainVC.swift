@@ -14,8 +14,15 @@ public final class MainVC: UIViewController {
     public weak var delegate: MainVCDelegate?
     
     // MARK: - Initializer
-    public init() {
+    public init(tracks: [Track]) {
+        self.tracks = tracks
         super.init(nibName: nil, bundle: nil)
+        self.dataSource = MainDataSource(
+            collectionView: self.rootView.collectionView,
+            tracks: tracks
+        )
+        
+        self.rootView.collectionView.delegate = self
     }
     
     public required init?(coder: NSCoder) {
@@ -37,6 +44,10 @@ public final class MainVC: UIViewController {
         super.viewDidLoad()
         self.title = "Trax"
     }
+    
+    // MARK: - Stored Properties
+    private let tracks: [Track]
+    private var dataSource: MainDataSource!
 }
 
 // MARK: - Views
@@ -44,3 +55,14 @@ extension MainVC {
     public var rootView: MainView { return self.view as! MainView }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout Functions
+extension MainVC: UICollectionViewDelegateFlowLayout {
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(
+            width: self.rootView.collectionView.frame.width - 30.0,
+            height: (self.rootView.collectionView.frame.height) / 3.5
+        )
+    }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 public final class MainVC: UIViewController {
     
@@ -23,6 +24,7 @@ public final class MainVC: UIViewController {
         )
         
         self.rootView.collectionView.delegate = self
+        self.restorationIdentifier = "MainVC"
     }
     
     public required init?(coder: NSCoder) {
@@ -48,6 +50,7 @@ public final class MainVC: UIViewController {
     // MARK: - Stored Properties
     private let tracks: [Track]
     private var dataSource: MainDataSource!
+
 }
 
 // MARK: - Views
@@ -58,7 +61,25 @@ extension MainVC {
 // MARK: - UICollectionViewDelegateFlowLayout Functions
 extension MainVC: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           self.cellTapped(track: self.tracks[indexPath.item])
+        
+        let track: Track = self.tracks[indexPath.item]
+        
+        self.cellTapped(track: track)
+
+        let visit: Visit = Visit()
+        visit.trackId = track.trackId
+        visit.date = Date()
+        
+        do {
+            let realm = try Realm()
+            
+            try realm.write {
+                realm.add(visit, update: Realm.UpdatePolicy.all)
+            }
+        }catch {
+            print("realm failed: \(error.localizedDescription)")
+        }
+        
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

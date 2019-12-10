@@ -10,6 +10,7 @@ target 'Trax' do
   pod 'Moya', '~> 13.0'
   pod 'Kingfisher'
   pod 'PKHUD', '~> 5.0'
+  pod 'RealmSwift'
 
   target 'TraxTests' do
     inherit! :search_paths

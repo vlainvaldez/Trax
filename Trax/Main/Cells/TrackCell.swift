@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RealmSwift
 
 public final class TrackCell: UICollectionViewCell {
         
@@ -162,6 +163,17 @@ extension TrackCell {
                 print("Job failed: \(error.localizedDescription)")
             }
         }
+        
+        let visitPrimaryKey = model.trackId
+        
+        do {
+            let realm = try Realm()
+            let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)            
+            print("\(String(describing: visit?.date))")
+        } catch {
+            print("Realm failed: \(error.localizedDescription)")
+        }
+        
     }
 }
 

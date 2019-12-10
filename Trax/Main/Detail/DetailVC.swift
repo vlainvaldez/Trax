@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 public final class DetailVC: UIViewController {
     
@@ -30,7 +31,8 @@ public final class DetailVC: UIViewController {
         super.viewDidLoad()
         
         self.rootView.configure(track: self.track)
-
+        self.restorationIdentifier = "DetailVC"
+        self.restorationClass = DetailVC.self
     }
     
     // MARK: - Stored Properties
@@ -40,5 +42,16 @@ public final class DetailVC: UIViewController {
 // MARK: - Views
 extension DetailVC {
     unowned var rootView: DetailView { return self.view as! DetailView }
+}
+
+extension DetailVC: UIViewControllerRestoration {
+    public static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
+        
+        
+        guard let vc: DetailVC = DetailVC(coder: coder) else { return UIViewController() }
+        
+        return vc
+        
+    }
 }
 

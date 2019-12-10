@@ -168,8 +168,12 @@ extension TrackCell {
         
         do {
             let realm = try Realm()
-            let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)            
-            print("\(String(describing: visit?.date))")
+            guard
+                let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)
+            else { return }
+
+            print("\(self.dateFormatter(date: visit.date))")
+            
         } catch {
             print("Realm failed: \(error.localizedDescription)")
         }
@@ -182,5 +186,17 @@ extension TrackCell {
     private func setCellCornerRadius() {
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
+    }
+    
+    private func dateFormatter(date: Date) -> String {
+        let f = ISO8601DateFormatter()
+        
+        f.formatOptions = [.withMonth, .withDay, .withTime, .withYear]
+        
+        f.timeZone = TimeZone.current
+        
+        let s = f.string(from: date)
+
+        return s
     }
 }

@@ -55,6 +55,30 @@ public final class TrackCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var priceStackView: UIStackView = {
+        let view: UIStackView = UIStackView(arrangedSubviews: [
+                self.priceLabel, self.priceValueLabel
+            ]
+        )
+        view.axis = NSLayoutConstraint.Axis.horizontal
+        view.alignment = UIStackView.Alignment.fill
+        view.distribution = UIStackView.Distribution.fillProportionally
+        view.spacing = 5.0
+        return view
+    }()
+    
+    private lazy var genreStackView: UIStackView = {
+        let view: UIStackView = UIStackView(arrangedSubviews: [
+                self.genreLabel, self.genreValueLabel
+            ]
+        )
+        view.axis = NSLayoutConstraint.Axis.horizontal
+        view.alignment = UIStackView.Alignment.fill
+        view.distribution = UIStackView.Distribution.fillProportionally
+        view.spacing = 5.0
+        return view
+    }()
+    
     private let genreLabel: UILabel = {
         let view: UILabel = UILabel()
         view.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)
@@ -71,6 +95,34 @@ public final class TrackCell: UICollectionViewCell {
         return view
     }()
     
+    private let lastVisitLabel: UILabel = {
+        let view: UILabel = UILabel()
+        view.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)
+        view.textColor = UIColor.white
+        view.text = "Last Visit:"
+        return view
+    }()
+
+    private let lastVisitValueLabel: UILabel = {
+        let view: UILabel = UILabel()
+        view.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)
+        view.textColor = UIColor.white
+        view.text = "Monday"
+        return view
+    }()
+    
+    private lazy var lastVisitStackView: UIStackView = {
+        let view: UIStackView = UIStackView(arrangedSubviews: [
+                self.lastVisitLabel, self.lastVisitValueLabel
+            ]
+        )
+        view.axis = NSLayoutConstraint.Axis.horizontal
+        view.alignment = UIStackView.Alignment.fill
+        view.distribution = UIStackView.Distribution.fillProportionally
+        view.spacing = 5.0
+        return view
+    }()
+    
     // MARK: - Initializer
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,12 +135,12 @@ public final class TrackCell: UICollectionViewCell {
         
         self.imageContainer.subviews(forAutoLayout: [
             self.imageView, self.headerLabel,
-            self.priceLabel, self.priceValueLabel,
-            self.genreLabel, self.genreValueLabel
+            self.priceStackView, self.genreStackView,
+            self.lastVisitStackView
         ])
         
         self.headerLabel.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
-            make.top.equalToSuperview().offset(5.0)
+            make.top.equalToSuperview().offset(20.0)
             make.leading.equalToSuperview().offset(20.0)
             make.trailing.equalToSuperview().inset(20.0)
         }
@@ -100,24 +152,19 @@ public final class TrackCell: UICollectionViewCell {
             make.width.equalTo(80.0)
         }
         
-        self.priceLabel.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
-            make.top.equalTo(self.imageView.snp.bottom).offset(5.0)
-            make.leading.equalTo(self.imageView)
+        self.priceStackView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.imageView.snp.bottom).offset(10.0)
+            make.centerX.equalToSuperview()
         }
         
-        self.priceValueLabel.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
-            make.leading.equalTo(self.priceLabel.snp.trailing).offset(5.0)
-            make.top.equalTo(self.priceLabel)
+        self.genreStackView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.priceStackView.snp.bottom).offset(5.0)
+            make.centerX.equalToSuperview()
         }
-        
-        self.genreLabel.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
-            make.top.equalTo(self.priceValueLabel.snp.bottom).offset(5.0)
-            make.leading.equalToSuperview().offset(50.0)
-        }
-        
-        self.genreValueLabel.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
-            make.leading.equalTo(self.genreLabel.snp.trailing).offset(5.0)
-            make.top.equalTo(self.genreLabel)
+
+        self.lastVisitStackView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.genreStackView.snp.bottom).offset(5.0)
+            make.centerX.equalToSuperview()
         }
         
         self.setCellCornerRadius()
@@ -170,9 +217,15 @@ extension TrackCell {
             let realm = try Realm()
             guard
                 let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)
-            else { return }
-
-            print("\(self.dateFormatter(date: visit.date))")
+            else {
+                self.lastVisitValueLabel.isHidden = true
+                self.lastVisitLabel.isHidden = true
+                return
+            }
+            self.lastVisitValueLabel.isHidden = false
+            self.lastVisitLabel.isHidden = false
+            
+            self.lastVisitValueLabel.text = self.dateFormatter(date: visit.date)
             
         } catch {
             print("Realm failed: \(error.localizedDescription)")
@@ -189,14 +242,11 @@ extension TrackCell {
     }
     
     private func dateFormatter(date: Date) -> String {
-        let f = ISO8601DateFormatter()
-        
-        f.formatOptions = [.withMonth, .withDay, .withTime, .withYear]
-        
-        f.timeZone = TimeZone.current
-        
-        let s = f.string(from: date)
+        let format = DateFormatter()
+        format.timeZone = .current
+        format.dateFormat = "MMM d, h:mm a"
+        let dateString = format.string(from: date)
 
-        return s
+        return dateString
     }
 }

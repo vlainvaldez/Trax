@@ -44,7 +44,12 @@ public final class MainVC: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Trax"
+        self.title = "VideoCity"
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)        
+        self.rootView.collectionView.reloadData()
     }
     
     // MARK: - Stored Properties
@@ -86,7 +91,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
 
         return CGSize(
             width: self.rootView.collectionView.frame.width - 30.0,
-            height: (self.rootView.collectionView.frame.height) / 3.5
+            height: (self.rootView.collectionView.frame.height) / 2.5
         )
     }
 }

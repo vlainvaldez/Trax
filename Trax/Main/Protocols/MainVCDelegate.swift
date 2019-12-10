@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol MainVCDelegate: class {
-    
+    func goToDetail(track: Track)
 }

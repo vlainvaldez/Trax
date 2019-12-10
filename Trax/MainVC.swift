@@ -57,12 +57,22 @@ extension MainVC {
 
 // MARK: - UICollectionViewDelegateFlowLayout Functions
 extension MainVC: UICollectionViewDelegateFlowLayout {
-
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           self.cellTapped(track: self.tracks[indexPath.item])
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         return CGSize(
             width: self.rootView.collectionView.frame.width - 30.0,
             height: (self.rootView.collectionView.frame.height) / 3.5
         )
+    }
+}
+
+// MARK: - MainVCDelegate Methods
+extension MainVC {
+    private func cellTapped(track: Track) {
+        self.delegate?.goToDetail(track: track)
     }
 }

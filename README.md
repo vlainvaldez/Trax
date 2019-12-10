@@ -30,7 +30,7 @@ A Storyboard full of vcs is really slow to load and use, thats why I use it with
 - Networking abstraction layer that sufficiently encapsulates actually calling Alamofire directly. It should be simple enough that common things are easy, but comprehensive enough that complicated things are also easy.
 
 [RealmSwift](https://realm.io/docs/swift/latest/)
-- I Used Realm in this project because of the ease of use and I think it is suitable for a small project that doesn't really rely heavily on a complex threading
+- I used Realm in this project because of the ease of use and I think it is suitable for a small project that doesn't really rely heavily on a complex threading
 
 - Data Persistence(local storage)
 

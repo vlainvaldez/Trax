@@ -5,13 +5,16 @@ A Sample Project to demo the fetch of data from API Source
 
 ## Architecture Used
 MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/) + Programmatic UI
-### The Choice of using Coordinator is actually based on my experience on how to architecture the app with minimal used of boilerplate and to solve the navigation flow of the app for the developer to be clear on what will be the next to show. 
 
-###The Main app is actually dissected with these parts
+#### The Choice of using Coordinator is actually based on my experience on how to architecture the app with minimal used of boilerplate and to solve the navigation flow of the app for the developer to be clear on what will be the next screen to show. 
+
+### The Main app is actually dissected with these parts
 - Coordinator
+	- The flow navigation of the app
 - VC
+	- logic controller of the app
 - View
-
+	- The class of the app on where the UI is being designed programmatically
 
 ## Pods Used
 

@@ -15,6 +15,8 @@ MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/) + Pr
 	- logic controller of the app
 - View
 	- The class of the app on where the UI is being designed programmatically
+### Programmatic UI Rocks!
+A Storyboard full of vcs is really slow to load and use, thats why I use it with the creation of UI in my project, the traditional programmatic UI creation is actually confusing and tends to bloat the class file thats why Im using [SnapKit](https://github.com/SnapKit/SnapKit) for the [DSL](https://www.swiftbysundell.com/articles/building-dsls-in-swift/)
 
 ## Pods Used
 
@@ -32,7 +34,7 @@ MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/) + Pr
 
 ### How To Install
 
-1. Cocoapods needs to be install first on your machine
+1. Cocoapods needs to be installed first on your machine
 
 2. Clone the project
 
@@ -44,7 +46,7 @@ MVC + [Coordinator Pattern](http://khanlou.com/2015/10/coordinators-redux/) + Pr
 
 4. go inside the directory and 
 	``` 
-	open Trax.xcworkspace.xcworkspace
+	open Trax.xcworkspace
 	```
 
 5. Build and Run

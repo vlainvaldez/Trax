@@ -156,14 +156,14 @@
 		7C778A1A239E91E900B5E838 /* Trax */ = {
 			isa = PBXGroup;
 			children = (
-				7C778A6E239F5D0F00B5E838 /* Utilities */,
+				7C778A4D239E957A00B5E838 /* App */,
 				7C778A68239F51E800B5E838 /* Models */,
+				7C778A4B239E956600B5E838 /* Resources */,
+				7C820EA424D904DC00108D20 /* SupportingFiles */,
+				7C778A6E239F5D0F00B5E838 /* Utils */,
 				7C778A65239F4E9D00B5E838 /* Networking */,
-				7C778A4B239E956600B5E838 /* Supporting Files */,
 				7C778A4C239E957100B5E838 /* Architecture */,
-				7C778A4D239E957A00B5E838 /* App Controller */,
 				7C778A4E239E958300B5E838 /* Main */,
-				7C778A29239E91EC00B5E838 /* Info.plist */,
 			);
 			path = Trax;
 			sourceTree = "<group>";
@@ -186,13 +186,13 @@
 			path = TraxUITests;
 			sourceTree = "<group>";
 		};
-		7C778A4B239E956600B5E838 /* Supporting Files */ = {
+		7C778A4B239E956600B5E838 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				7C778A24239E91EC00B5E838 /* Assets.xcassets */,
 				7C778A5C239E99E300B5E838 /* LaunchScreen.storyboard */,
 			);
-			path = "Supporting Files";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		7C778A4C239E957100B5E838 /* Architecture */ = {
@@ -203,14 +203,14 @@
 			path = Architecture;
 			sourceTree = "<group>";
 		};
-		7C778A4D239E957A00B5E838 /* App Controller */ = {
+		7C778A4D239E957A00B5E838 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				7C778A1D239E91E900B5E838 /* SceneDelegate.swift */,
 				7C778A1B239E91E900B5E838 /* AppDelegate.swift */,
 				7C778A63239E9AF100B5E838 /* AppMainCoordinator.swift */,
 			);
-			path = "App Controller";
+			path = App;
 			sourceTree = "<group>";
 		};
 		7C778A4E239E958300B5E838 /* Main */ = {
@@ -273,13 +273,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		7C778A6E239F5D0F00B5E838 /* Utilities */ = {
+		7C778A6E239F5D0F00B5E838 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				7C778A72239F5D3700B5E838 /* Enums */,
 				7C778A6F239F5D1600B5E838 /* Extensions */,
 			);
-			path = Utilities;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		7C778A6F239F5D1600B5E838 /* Extensions */ = {
@@ -314,6 +314,14 @@
 				7C778A7F239F6ACA00B5E838 /* DetailCoordinator.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		7C820EA424D904DC00108D20 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7C778A29239E91EC00B5E838 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		7C83C0BF239F8D04002B667A /* Realm */ = {
@@ -748,7 +756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3S4MHP69HY;
-				INFOPLIST_FILE = Trax/Info.plist;
+				INFOPLIST_FILE = Trax/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -767,7 +775,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3S4MHP69HY;
-				INFOPLIST_FILE = Trax/Info.plist;
+				INFOPLIST_FILE = Trax/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

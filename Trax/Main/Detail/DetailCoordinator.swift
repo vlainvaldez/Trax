@@ -8,27 +8,23 @@
 
 import UIKit
 
-public final class DetailCoordinator: AbstractCoordinator {
+class DetailCoordinator: AbstractCoordinator {
+  
+  // MARK: - Initializer
+  init(navigationController: UINavigationController, track: Track) {
+    self.navigationController = navigationController
+    self.track = track
+    super.init()
+  }
     
-    // MARK: - Initializer
-    public init(navigationController: UINavigationController, track: Track) {
-        self.navigationController = navigationController
-        self.track = track
-        super.init()
+  // MARK: - Stored Properties
+  private unowned let navigationController: UINavigationController
+  private let track: Track
         
-    }
-    
-    // MARK: - Stored Properties
-    private unowned let navigationController: UINavigationController
-    private let track: Track
-    
-    
-    // MARK: - Instance Methods
-    public override func start() {
-        super.start()
-        let vc: DetailVC = DetailVC(track: track)
-
-        self.navigationController.pushViewController(vc, animated: true)
-    }
-    
+  // MARK: - Instance Methods
+  override func start() {
+    super.start()
+    let vc: DetailVC = DetailVC(track: track)
+    navigationController.pushViewController(vc, animated: true)
+  }
 }

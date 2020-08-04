@@ -8,44 +8,43 @@
 
 import UIKit
 
-public final class MainDataSource: NSObject {
+class MainDataSource: NSObject {
     
-    // MARK: - Initializer
-    public init(collectionView: UICollectionView, tracks: [Track]) {
-        self.collectionView = collectionView
-        self.tracks = tracks
-        self.numberOfCells = tracks.count
-        super.init()
-        
-        self.collectionView.register(
-            TrackCell.self,
-            forCellWithReuseIdentifier: TrackCell.identifier
-        )
-        
-        self.collectionView.dataSource = self
-    }
+  // MARK: - Initializer
+  init(collectionView: UICollectionView, tracks: [Track]) {
+    self.collectionView = collectionView
+    self.tracks = tracks
+    numberOfCells = tracks.count
+    super.init()
+      
+    collectionView.register(
+      TrackCell.self,
+      forCellWithReuseIdentifier: TrackCell.identifier
+    )
+    collectionView.dataSource = self
+  }
     
-    // MARK: - Stored Properties
-    public unowned let collectionView: UICollectionView
-    public var tracks: [Track]
-    private var numberOfCells: Int
-    private var page: Int = 1
-    
+  // MARK: - Stored Properties
+  unowned let collectionView: UICollectionView
+  var tracks: [Track]
+  private var numberOfCells: Int
+  private var page: Int = 1
 }
 
 extension MainDataSource: UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.tracks.count
-    }
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return tracks.count
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
+    let cell: TrackCell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: TrackCell.identifier,
+      for: indexPath) as! TrackCell
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TrackCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TrackCell.identifier,
-            for: indexPath) as! TrackCell
-        
-        cell.configure(with: self.tracks[indexPath.row])
-        
-        return cell
-    }
-    
+    cell.configure(with: tracks[indexPath.row])
+    return cell
+  }
 }

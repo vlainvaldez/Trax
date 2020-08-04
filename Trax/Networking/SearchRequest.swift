@@ -9,53 +9,50 @@
 import Foundation
 import Moya
 
-public enum SearchRequest {
-    case search
+enum SearchRequest {
+  case search
 }
 
 extension SearchRequest: TargetType {
-    public var baseURL: URL {
-        return URL(string: "https://itunes.apple.com")!
+  var baseURL: URL {
+    return URL(string: "https://itunes.apple.com")!
+  }
+    
+  var path: String {
+    switch self {
+    case .search:
+      return "/search"
     }
+  }
     
-    public var path: String {
-        switch self {
-        case .search:
-            return "/search"
-        }
+  var method: Moya.Method {
+    switch self {
+    case .search:
+      return Moya.Method.get
     }
-    
-    public var method: Moya.Method {
-        switch self {
-        case .search:
-            return Moya.Method.get
-        }
+  }
+  
+  var sampleData: Data {
+    return Data()
+  }
+  
+  var task: Task {
+    switch self {
+    case .search:
+      return .requestParameters(
+        parameters: [
+          "term": "star",
+          "country": "au",
+          "media": "movie",
+          "all": ""
+        ],
+        encoding: URLEncoding.queryString)
     }
-    
-    public var sampleData: Data {
-        return Data()
-    }
-    
-    public var task: Task {
-        switch self {
-        case .search:
-                return .requestParameters(
-                    parameters: [
-                        "term": "star",
-                        "country": "au",
-                        "media": "movie",
-                        "all": ""
-                    ],
-                    encoding: URLEncoding.queryString
-                )
-        }
-    }
-    
-    
-    public var headers: [String : String]? {
-        return [
-            "Content-Type": "application/json"
-        ]
-    }
-    
+  }
+
+  var headers: [String : String]? {
+    return [
+      "Content-Type": "application/json"
+    ]
+  }
 }

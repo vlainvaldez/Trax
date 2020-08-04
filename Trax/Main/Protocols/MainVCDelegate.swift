@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol MainVCDelegate: class {
-    func goToDetail(track: Track)
+protocol MainVCDelegate: class {
+  func goToDetail(track: Track)
 }

@@ -9,49 +9,51 @@
 import UIKit
 import RealmSwift
 
-public final class DetailVC: UIViewController {
+class DetailVC: UIViewController {
+  
+  // MARK: - Stored Properties
+  private let track: Track
+  
+  // MARK: - Initializer
+  init(track: Track) {
+    self.track = track
+    super.init(nibName: nil, bundle: nil)
+  }
     
-    // MARK: - Initializer
-    public init(track: Track) {
-        self.track = track
-        super.init(nibName: nil, bundle: nil)
-    }
+  required  init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
     
-    public required  init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  // MARK: - ViewController Lifecycle Methods
+  override func loadView() {
+    view = DetailView()
+  }
     
-    // MARK: - ViewController Lifecycle Methods
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    public override func loadView() {
-        self.view = DetailView()
-    }
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.rootView.configure(track: self.track)
-        self.restorationIdentifier = "DetailVC"
-        self.restorationClass = DetailVC.self
-    }
-    
-    // MARK: - Stored Properties
-    private let track: Track
+    rootView.configure(track: track)
+    restorationIdentifier = "DetailVC"
+    restorationClass = DetailVC.self
+  }
 }
 
 // MARK: - Views
 extension DetailVC {
-    unowned var rootView: DetailView { return self.view as! DetailView }
+  unowned var rootView: DetailView { return view as! DetailView }
 }
 
 extension DetailVC: UIViewControllerRestoration {
-    public static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
-        
-        
-        guard let vc: DetailVC = DetailVC(coder: coder) else { return UIViewController() }
-        
-        return vc
-        
-    }
+  static func viewController(
+    withRestorationIdentifierPath
+    identifierComponents: [String],
+    coder: NSCoder) -> UIViewController? {
+    
+    guard
+      let vc: DetailVC = DetailVC(coder: coder)
+    else { return UIViewController() }
+    
+    return vc
+  }
 }
 

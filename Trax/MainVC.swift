@@ -9,96 +9,96 @@
 import UIKit
 import RealmSwift
 
-public final class MainVC: UIViewController {
+class MainVC: UIViewController {
     
-    // MARK: Delegate Declarations
-    public weak var delegate: MainVCDelegate?
+  // MARK: - Stored Properties
+  let tracks: [Track]
+  var dataSource: MainDataSource!
+  
+  // MARK: Delegate Declarations
+  weak var delegate: MainVCDelegate?
     
-    // MARK: - Initializer
-    public init(tracks: [Track]) {
-        self.tracks = tracks
-        super.init(nibName: nil, bundle: nil)
-        self.dataSource = MainDataSource(
-            collectionView: self.rootView.collectionView,
-            tracks: tracks
-        )
-        
-        self.rootView.collectionView.delegate = self
-        self.restorationIdentifier = "MainVC"
-    }
+  // MARK: - Initializer
+  init(tracks: [Track]) {
+    self.tracks = tracks
+    super.init(nibName: nil, bundle: nil)
+    dataSource = MainDataSource(
+        collectionView: rootView.collectionView,
+        tracks: tracks
+    )
     
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Deinitializer
-    deinit {
-        print("\(type(of: self)) was deallocated")
-    }
-    
-    // MARK: - LifeCycle Methods
-    public override func loadView() {
-        super.loadView()
-        self.view = MainView()
-    }
+    rootView.collectionView.delegate = self
+    restorationIdentifier = "MainVC"
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - Deinitializer
+  deinit {
+    debugPrint("\(type(of: self)) was deallocated")
+  }
+  
+  // MARK: - LifeCycle Methods
+  override func loadView() {
+    super.loadView()
+    view = MainView()
+  }
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "VideoCity"
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)        
-        self.rootView.collectionView.reloadData()
-    }
-    
-    // MARK: - Stored Properties
-    private let tracks: [Track]
-    private var dataSource: MainDataSource!
-
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "VideoCity"
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    rootView.collectionView.reloadData()
+  }
 }
 
 // MARK: - Views
 extension MainVC {
-    public var rootView: MainView { return self.view as! MainView }
+  var rootView: MainView { return self.view as! MainView }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout Functions
 extension MainVC: UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let track: Track = self.tracks[indexPath.item]
-        
-        self.cellTapped(track: track)
-
-        let visit: Visit = Visit()
-        visit.trackId = track.trackId
-        visit.date = Date()
-        
-        do {
-            let realm = try Realm()
-            
-            try realm.write {
-                realm.add(visit, update: Realm.UpdatePolicy.all)
-            }
-        }catch {
-            print("realm failed: \(error.localizedDescription)")
-        }
-        
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
+    let track = tracks[indexPath.item]
+      
+    cellTapped(track: track)
+    let visit = Visit()
+    visit.trackId = track.trackId
+    visit.date = Date()
+      
+    do {
+      let realm = try Realm()
+      try realm.write {
+        realm.add(visit, update: Realm.UpdatePolicy.all)
+      }
+    } catch {
+      debugPrint("realm failed: \(error.localizedDescription)")
     }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(
-            width: self.rootView.collectionView.frame.width - 30.0,
-            height: (self.rootView.collectionView.frame.height) / 2.5
-        )
-    }
+    return CGSize(
+      width: rootView.collectionView.frame.width - 30.0,
+      height: (rootView.collectionView.frame.height) / 2.5
+    )
+  }
 }
 
 // MARK: - MainVCDelegate Methods
 extension MainVC {
-    private func cellTapped(track: Track) {
-        self.delegate?.goToDetail(track: track)
-    }
+  func cellTapped(track: Track) {
+    delegate?.goToDetail(track: track)
+  }
 }

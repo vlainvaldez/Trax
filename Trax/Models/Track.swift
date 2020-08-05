@@ -15,17 +15,17 @@ struct Search: Decodable {
 class Track: NSObject, Decodable {
 
   // MARK: Stored Properties
-  public let trackId: Int
-  public let trackName: String
-  public let artworkUrl100: URL
-  public let collectionPrice: Double
-  public let trackPrice: Double
-  public let trackRentalPrice: Double
-  public let collectionHdPrice: Double
-  public let trackHdPrice: Double
-  public let trackHdRentalPrice: Double
-  public let longDescription: String
-  public let primaryGenreName: String
+  let trackId: Int
+  let trackName: String
+  let artworkUrl100: URL
+  let collectionPrice: Double
+  let trackPrice: Double
+  let trackRentalPrice: Double
+  let collectionHdPrice: Double
+  let trackHdPrice: Double
+  let trackHdRentalPrice: Double
+  let longDescription: String
+  let primaryGenreName: String
 
   // MARK: - Enums
   enum CodingKeys: String, CodingKey {

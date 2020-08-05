@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 class Visit: Object {
   @objc dynamic var trackId: Int = 0
   @objc dynamic var date: Date = Date()

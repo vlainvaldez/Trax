@@ -11,12 +11,14 @@ import UIKit
 class MainDataSource: NSObject {
   
   // MARK: - Stored Properties
+  
   unowned let collectionView: UICollectionView  
   private var numberOfCells: Int
   private var page: Int = 1
   var tracks: [Track]
     
   // MARK: - Initializer
+  
   init(collectionView: UICollectionView, tracks: [Track]) {
     self.collectionView = collectionView
     self.tracks = tracks

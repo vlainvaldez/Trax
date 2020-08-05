@@ -14,6 +14,7 @@ import RealmSwift
 class TrackCell: UICollectionViewCell {
         
   // MARK: - Subviews
+  
   private let imageContainer: UIView = {
     let view: UIView = UIView()
     view.backgroundColor = AppUI.Color.sky

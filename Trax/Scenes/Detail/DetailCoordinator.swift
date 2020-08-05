@@ -11,10 +11,12 @@ import UIKit
 class DetailCoordinator: AbstractCoordinator {
 
   // MARK: - Stored Properties
+  
   private unowned let navigationController: UINavigationController
   private let track: Track
   
   // MARK: - Initializer
+  
   init(navigationController: UINavigationController, track: Track) {
     self.navigationController = navigationController
     self.track = track
@@ -22,6 +24,7 @@ class DetailCoordinator: AbstractCoordinator {
   }
       
   // MARK: - Instance Methods
+  
   override func start() {
     super.start()
     let vc: DetailVC = DetailVC(track: track)

@@ -12,6 +12,7 @@ import Moya
 struct TrackAPIService {
     
   // MARK: - Store Properties
+  
   private let trackProvider: MoyaProvider = MoyaProvider<SearchRequest>()
   
   func getTracks(completion: @escaping ([Track]) -> Void ) {

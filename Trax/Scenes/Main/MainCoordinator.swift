@@ -11,16 +11,19 @@ import UIKit
 class MainCoordinator: AbstractCoordinator {
       
   // MARK: - Stored Properties
+  
   private let navigationController: UINavigationController
   private let trackAPIService: TrackAPIService = TrackAPIService()
   
   // MARK: - Initializer
+  
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
     super.init()
   }
 
   // MARK: - Instance Methods
+  
   override func start() {
     super.start()
     trackAPIService.getTracks { (tracks: [Track]) -> Void in

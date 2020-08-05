@@ -11,11 +11,13 @@ import UIKit
 open class AppMainCoordinator: AbstractCoordinator {
     
   // MARK: Stored Properties
+  
   private unowned let rootViewController: UINavigationController
   private unowned let window: UIWindow
   private let trackAPIService: TrackAPIService = TrackAPIService()
   
   // MARK: Initializer
+  
   init(window: UIWindow, rootViewController: UINavigationController) {
     self.window = window
     self.rootViewController = rootViewController
@@ -31,6 +33,7 @@ open class AppMainCoordinator: AbstractCoordinator {
   }
   
   // MARK: Instance Methods
+  
   open override func start() {
     super.start()
 

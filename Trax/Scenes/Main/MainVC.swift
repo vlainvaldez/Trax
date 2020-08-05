@@ -12,9 +12,11 @@ import RealmSwift
 class MainVC: UIViewController {
     
   // MARK: Delegate Declarations
+  
   weak var delegate: MainVCDelegate?
   
-  // MARK: - Stored Properties  
+  // MARK: - Stored Properties
+  
   let tracks: [Track]
   var dataSource: MainDataSource!
     

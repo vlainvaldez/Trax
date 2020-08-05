@@ -8,8 +8,8 @@
 
 import UIKit
 
-
 enum AppUI {
+  
   enum Color {
     static let crimson: UIColor = UIColor(
       red: 238.0/255.0,

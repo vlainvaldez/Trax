@@ -12,9 +12,11 @@ import RealmSwift
 class DetailVC: UIViewController {
   
   // MARK: - Stored Properties
+  
   private let track: Track
   
   // MARK: - Initializer
+  
   init(track: Track) {
     self.track = track
     super.init(nibName: nil, bundle: nil)

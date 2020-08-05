@@ -12,6 +12,7 @@ import SnapKit
 class MainView: UIView {
     
   // MARK: Subviews
+  
   let collectionView: UICollectionView = {
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical

@@ -13,6 +13,7 @@ import Kingfisher
 class DetailView: UIView {
 
   // MARK: - Subviews
+  
   private let bannerView: UIView = {
     let view: UIView = UIView()
     view.backgroundColor = AppUI.Color.sky
@@ -112,6 +113,7 @@ class DetailView: UIView {
   }()
 
   // MARK: - Initializer
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -146,6 +148,7 @@ class DetailView: UIView {
   }
 
   // MARK: Instance Methods
+  
   override func layoutSubviews() {
     super.layoutSubviews()
     layoutIfNeeded()

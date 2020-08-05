@@ -15,6 +15,7 @@ struct Search: Decodable {
 class Track: NSObject, Decodable {
 
   // MARK: Stored Properties
+  
   let trackId: Int
   let trackName: String
   let artworkUrl100: URL
@@ -28,6 +29,7 @@ class Track: NSObject, Decodable {
   let primaryGenreName: String
 
   // MARK: - Enums
+  
   enum CodingKeys: String, CodingKey {
   case trackId
   case trackName
@@ -43,6 +45,7 @@ class Track: NSObject, Decodable {
   }
 
   // MARK: - Initializer
+  
   required init(from decoder: Decoder) throws {
     let container: KeyedDecodingContainer<Track.CodingKeys> = try
       decoder.container(

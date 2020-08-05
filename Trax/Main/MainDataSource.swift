@@ -9,6 +9,12 @@
 import UIKit
 
 class MainDataSource: NSObject {
+  
+  // MARK: - Stored Properties
+  unowned let collectionView: UICollectionView
+  var tracks: [Track]
+  private var numberOfCells: Int
+  private var page: Int = 1
     
   // MARK: - Initializer
   init(collectionView: UICollectionView, tracks: [Track]) {
@@ -23,12 +29,6 @@ class MainDataSource: NSObject {
     )
     collectionView.dataSource = self
   }
-    
-  // MARK: - Stored Properties
-  unowned let collectionView: UICollectionView
-  var tracks: [Track]
-  private var numberOfCells: Int
-  private var page: Int = 1
 }
 
 extension MainDataSource: UICollectionViewDataSource {

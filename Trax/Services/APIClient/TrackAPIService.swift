@@ -15,7 +15,7 @@ struct TrackAPIService {
   
   private let trackProvider: MoyaProvider = MoyaProvider<SearchRequest>()
   
-  func getTracks(completion: @escaping ([Track]) -> Void ) {
+  func getTracks(completion: @escaping SingleResult<[Track]> ) {
     trackProvider.request(SearchRequest.search) { (result) in
       switch result {
       case .success(let response):

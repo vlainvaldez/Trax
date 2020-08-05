@@ -11,14 +11,15 @@ import RealmSwift
 
 class MainVC: UIViewController {
     
-  // MARK: - Stored Properties
-  let tracks: [Track]
-  var dataSource: MainDataSource!
-  
   // MARK: Delegate Declarations
   weak var delegate: MainVCDelegate?
+  
+  // MARK: - Stored Properties  
+  let tracks: [Track]
+  var dataSource: MainDataSource!
     
   // MARK: - Initializer
+  
   init(tracks: [Track]) {
     self.tracks = tracks
     super.init(nibName: nil, bundle: nil)
@@ -36,11 +37,16 @@ class MainVC: UIViewController {
   }
   
   // MARK: - Deinitializer
+  
   deinit {
     debugPrint("\(type(of: self)) was deallocated")
   }
-  
-  // MARK: - LifeCycle Methods
+}
+
+// MARK: - LifeCycle Methods
+
+extension MainVC {
+
   override func loadView() {
     super.loadView()
     view = MainView()
@@ -58,11 +64,13 @@ class MainVC: UIViewController {
 }
 
 // MARK: - Views
+
 extension MainVC {
   var rootView: MainView { return self.view as! MainView }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout Functions
+
 extension MainVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       
@@ -97,6 +105,7 @@ extension MainVC: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - MainVCDelegate Methods
+
 extension MainVC {
   func cellTapped(track: Track) {
     delegate?.goToDetail(track: track)

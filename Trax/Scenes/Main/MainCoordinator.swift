@@ -34,7 +34,9 @@ class MainCoordinator: AbstractCoordinator {
 
 
 // MARK: - MainVCDelegate Methods
+
 extension MainCoordinator: MainVCDelegate {
+  
   func goToDetail(track: Track) {
     let coordinator: DetailCoordinator = DetailCoordinator(
         navigationController: navigationController,
@@ -48,15 +50,16 @@ extension MainCoordinator: MainVCDelegate {
 }
 
 // MARK: - UINavigationControllerDelegate Methods
+
 extension MainCoordinator: UINavigationControllerDelegate {
+  
   func navigationController(
     _ navigationController: UINavigationController,
     didShow viewController: UIViewController,
     animated: Bool
   ) {    
-    guard
-      let fromViewController = navigationController.transitionCoordinator?.viewController(
-          forKey: UITransitionContextViewControllerKey.from),
+    guard let fromViewController = navigationController.transitionCoordinator?
+      .viewController(forKey: UITransitionContextViewControllerKey.from),
       !navigationController.viewControllers.contains(fromViewController),
       fromViewController is DetailVC
     else { return }

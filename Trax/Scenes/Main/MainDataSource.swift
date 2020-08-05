@@ -11,10 +11,10 @@ import UIKit
 class MainDataSource: NSObject {
   
   // MARK: - Stored Properties
-  unowned let collectionView: UICollectionView
-  var tracks: [Track]
+  unowned let collectionView: UICollectionView  
   private var numberOfCells: Int
   private var page: Int = 1
+  var tracks: [Track]
     
   // MARK: - Initializer
   init(collectionView: UICollectionView, tracks: [Track]) {
@@ -31,7 +31,10 @@ class MainDataSource: NSObject {
   }
 }
 
+// MARK: - UICollectionViewDataSource Methods Declarations
+
 extension MainDataSource: UICollectionViewDataSource {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return tracks.count
   }

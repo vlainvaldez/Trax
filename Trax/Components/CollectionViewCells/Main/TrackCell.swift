@@ -176,7 +176,8 @@ class TrackCell: UICollectionViewCell {
   }
 }
 
-// MARK: Configurables
+// MARK: - Configurables
+
 extension TrackCell {
   static var identifier: String {
     return "TrackCell"
@@ -186,8 +187,7 @@ extension TrackCell {
       
     let imageString: String = "\(model.artworkUrl100)"
     
-    guard
-      let thumbNailURL: URL = URL(string: imageString)
+    guard let thumbNailURL: URL = URL(string: imageString)
     else { return }
     
     imageView.kf.indicatorType = .activity
@@ -215,8 +215,7 @@ extension TrackCell {
     
     do {
       let realm = try Realm()
-      guard
-        let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)
+      guard let visit = realm.object(ofType: Visit.self, forPrimaryKey: visitPrimaryKey)
       else {
         lastVisitValueLabel.isHidden = true
         lastVisitLabel.isHidden = true
@@ -232,7 +231,9 @@ extension TrackCell {
 }
 
 // MARK: - Helper Methods
+
 extension TrackCell {
+  
   private func setCellCornerRadius() {
     layer.cornerRadius = 10
     layer.masksToBounds = true

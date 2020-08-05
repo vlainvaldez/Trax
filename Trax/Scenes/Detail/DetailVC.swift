@@ -23,8 +23,12 @@ class DetailVC: UIViewController {
   required  init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-    
-  // MARK: - ViewController Lifecycle Methods
+}
+
+// MARK: - ViewController Lifecycle Methods
+
+extension DetailVC {
+  
   override func loadView() {
     view = DetailView()
   }
@@ -39,6 +43,7 @@ class DetailVC: UIViewController {
 }
 
 // MARK: - Views
+
 extension DetailVC {
   unowned var rootView: DetailView { return view as! DetailView }
 }

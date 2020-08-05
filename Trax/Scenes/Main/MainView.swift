@@ -25,6 +25,7 @@ class MainView: UIView {
   }()
     
   // MARK: - Initializer
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -44,6 +45,7 @@ class MainView: UIView {
   }
     
   // MARK: - Deinitializer
+  
   deinit {
     debugPrint("\(type(of: self)) was deallocated")
   }

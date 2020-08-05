@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1AFCEB32C0A8935A21FD6A39 /* Pods_Trax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACB21EF9410A4BF9E98CB1A /* Pods_Trax.framework */; };
+		7C59B5DE24DA87C9000E5F9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C59B5DD24DA87C9000E5F9C /* SceneDelegate.swift */; };
+		7C59B5E024DA87EE000E5F9C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C59B5DF24DA87EE000E5F9C /* MainVC.swift */; };
 		7C778A1C239E91E900B5E838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C778A1B239E91E900B5E838 /* AppDelegate.swift */; };
-		7C778A1E239E91E900B5E838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C778A1D239E91E900B5E838 /* SceneDelegate.swift */; };
-		7C778A20239E91E900B5E838 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C778A1F239E91E900B5E838 /* MainVC.swift */; };
 		7C778A25239E91EC00B5E838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C778A24239E91EC00B5E838 /* Assets.xcassets */; };
 		7C778A33239E91ED00B5E838 /* TraxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C778A32239E91ED00B5E838 /* TraxTests.swift */; };
 		7C778A3E239E91ED00B5E838 /* TraxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C778A3D239E91ED00B5E838 /* TraxUITests.swift */; };
@@ -60,10 +60,10 @@
 		0136D126E8AE756DA4DA99BB /* Pods-Trax-TraxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trax-TraxUITests.release.xcconfig"; path = "Target Support Files/Pods-Trax-TraxUITests/Pods-Trax-TraxUITests.release.xcconfig"; sourceTree = "<group>"; };
 		531DFB44AA37CC91767FBA03 /* Pods-TraxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraxTests.debug.xcconfig"; path = "Target Support Files/Pods-TraxTests/Pods-TraxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72FD91179D941E7BEA12D4B9 /* Pods_TraxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TraxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C59B5DD24DA87C9000E5F9C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7C59B5DF24DA87EE000E5F9C /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = Trax/Scenes/Main/MainVC.swift; sourceTree = SOURCE_ROOT; };
 		7C778A18239E91E900B5E838 /* Trax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C778A1B239E91E900B5E838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7C778A1D239E91E900B5E838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../SceneDelegate.swift; sourceTree = "<group>"; };
-		7C778A1F239E91E900B5E838 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = ../MainVC.swift; sourceTree = "<group>"; };
 		7C778A24239E91EC00B5E838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C778A29239E91EC00B5E838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C778A2E239E91ED00B5E838 /* TraxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +131,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C59B5D724DA85C6000E5F9C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7C778A4E239E958300B5E838 /* Main */,
+				7C778A7A239F6AA100B5E838 /* Detail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7C59B5D824DA8646000E5F9C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7C59B5D924DA8676000E5F9C /* CollectionViewCells */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7C59B5D924DA8676000E5F9C /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7C59B5DA24DA8684000E5F9C /* Main */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		7C59B5DA24DA8684000E5F9C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7C778A76239F636900B5E838 /* TrackCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		7C778A0F239E91E900B5E838 = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +193,12 @@
 				7C778A68239F51E800B5E838 /* Models */,
 				7C778A4B239E956600B5E838 /* Resources */,
 				7C820EA424D904DC00108D20 /* SupportingFiles */,
+				7C778A6F239F5D1600B5E838 /* Extensions */,
 				7C778A6E239F5D0F00B5E838 /* Utils */,
+				7C59B5D824DA8646000E5F9C /* Components */,
 				7C778A65239F4E9D00B5E838 /* Networking */,
 				7C778A4C239E957100B5E838 /* Architecture */,
-				7C778A4E239E958300B5E838 /* Main */,
+				7C59B5D724DA85C6000E5F9C /* Scenes */,
 			);
 			path = Trax;
 			sourceTree = "<group>";
@@ -206,7 +241,7 @@
 		7C778A4D239E957A00B5E838 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				7C778A1D239E91E900B5E838 /* SceneDelegate.swift */,
+				7C59B5DD24DA87C9000E5F9C /* SceneDelegate.swift */,
 				7C778A1B239E91E900B5E838 /* AppDelegate.swift */,
 				7C778A63239E9AF100B5E838 /* AppMainCoordinator.swift */,
 			);
@@ -216,10 +251,8 @@
 		7C778A4E239E958300B5E838 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7C778A7A239F6AA100B5E838 /* Detail */,
-				7C778A75239F635B00B5E838 /* Cells */,
 				7C778A60239E9A7D00B5E838 /* Protocols */,
-				7C778A1F239E91E900B5E838 /* MainVC.swift */,
+				7C59B5DF24DA87EE000E5F9C /* MainVC.swift */,
 				7C778A5A239E964B00B5E838 /* MainView.swift */,
 				7C778A5E239E9A4100B5E838 /* MainCoordinator.swift */,
 				7C778A78239F642600B5E838 /* MainDataSource.swift */,
@@ -277,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				7C778A72239F5D3700B5E838 /* Enums */,
-				7C778A6F239F5D1600B5E838 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -296,14 +328,6 @@
 				7C778A73239F5D4400B5E838 /* AppUI.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		7C778A75239F635B00B5E838 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				7C778A76239F636900B5E838 /* TrackCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		7C778A7A239F6AA100B5E838 /* Detail */ = {
@@ -579,8 +603,8 @@
 			files = (
 				7C778A51239E95CF00B5E838 /* AbstractCoordinator.swift in Sources */,
 				7C778A5B239E964B00B5E838 /* MainView.swift in Sources */,
-				7C778A20239E91E900B5E838 /* MainVC.swift in Sources */,
 				7C778A80239F6ACA00B5E838 /* DetailCoordinator.swift in Sources */,
+				7C59B5E024DA87EE000E5F9C /* MainVC.swift in Sources */,
 				7C778A74239F5D4400B5E838 /* AppUI.swift in Sources */,
 				7C778A62239E9A9400B5E838 /* MainVCDelegate.swift in Sources */,
 				7C778A7C239F6AB400B5E838 /* DetailVC.swift in Sources */,
@@ -596,10 +620,10 @@
 				7C778A57239E961D00B5E838 /* TabBarCoordinator.swift in Sources */,
 				7C83C0C1239F8D18002B667A /* Visit.swift in Sources */,
 				7C778A1C239E91E900B5E838 /* AppDelegate.swift in Sources */,
-				7C778A1E239E91E900B5E838 /* SceneDelegate.swift in Sources */,
 				7C778A53239E95F000B5E838 /* AnyTabCoordinator.swift in Sources */,
 				7C778A6A239F51F600B5E838 /* Track.swift in Sources */,
 				7C778A79239F642600B5E838 /* MainDataSource.swift in Sources */,
+				7C59B5DE24DA87C9000E5F9C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
